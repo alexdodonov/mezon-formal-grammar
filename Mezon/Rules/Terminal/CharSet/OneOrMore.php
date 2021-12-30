@@ -32,6 +32,19 @@ class OneOrMore extends OneOrMoreBase
     {
         $ruleWasApplied = false;
 
-        return $this->validateStrict($iterator, $ruleWasApplied);
+        $startPosition = $iterator->current();
+
+        // we have reached the end of the string
+        if ($iterator->current() === $iterator->end()) {
+            // empty strings are not allowed
+            return $iterator;
+        }
+
+        do {} while (strpos($this->getCharSet(), $iterator->get()) !== false && $iterator->next());
+
+        // at least one symbol must be found
+        $ruleWasApplied = $iterator->current() > $startPosition;
+
+        return $iterator;
     }
 }

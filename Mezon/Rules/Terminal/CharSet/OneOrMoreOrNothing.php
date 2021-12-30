@@ -32,6 +32,14 @@ class OneOrMoreOrNothing extends OneOrMoreBase
     {
         $ruleWasApplied = true;
 
-        return $this->validateStrict($iterator, $ruleWasApplied);
+        // we have reached the end of the string
+        if ($iterator->current() === $iterator->end()) {
+            // empty strings are not allowed
+            return $iterator;
+        }
+
+        do {} while (strpos($this->getCharSet(), $iterator->get()) !== false && $iterator->next());
+
+        return $iterator;
     }
 }

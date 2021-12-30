@@ -26,12 +26,7 @@ class OneOrMoreOrNothingUnitTest extends TestCase
                 'aab',
                 true
             ],
-            // #1, the second case, unexpected symbol
-            [
-                'aac',
-                false
-            ],
-            // #2, the second case
+            // #1, the second case
             [
                 '',
                 true

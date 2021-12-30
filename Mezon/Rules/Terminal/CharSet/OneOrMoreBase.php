@@ -43,29 +43,12 @@ abstract class OneOrMoreBase implements RuleInterface
     }
 
     /**
-     * Validating that at least one symbol from the charset exists
+     * Method returns char set
      *
-     * @param StringIterator $iterator
-     *            iterator
-     * @param bool $ruleWasApplied
-     *            was the rule applied
-     * @return StringIterator iterator
+     * @return string char set
      */
-    protected function validateStrict(StringIterator $iterator, bool &$ruleWasApplied): StringIterator
+    protected function getCharSet(): string
     {
-        $startPosition = $iterator->current();
-
-        // we have reached the end of the string
-        if ($iterator->current() === $iterator->end()) {
-            // empty strings are not allowed
-            return $iterator;
-        }
-
-        do {} while (strpos($this->charSet, $iterator->get()) !== false && $iterator->next());
-
-        // at least one symbol must be found
-        $ruleWasApplied = $iterator->current() > $startPosition;
-
-        return $iterator;
+        return $this->charSet;
     }
 }
