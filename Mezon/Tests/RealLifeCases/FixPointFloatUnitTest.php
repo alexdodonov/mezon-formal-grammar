@@ -4,7 +4,7 @@ namespace Mezon\Tests\RealLifeCases;
 use PHPUnit\Framework\TestCase;
 use Mezon\FormalGrammar;
 use Mezon\Rules\Complex\CompoundRule;
-use Mezon\Rules\Terminal\CharSet\MoreThanOne;
+use Mezon\Rules\Terminal\CharSet\OneOrMore;
 use Mezon\Rules\Terminal\CharSet\OneExactly;
 use Mezon\Rules\Terminal\CharSet\OneExactlyOrNothing;
 
@@ -81,9 +81,9 @@ class FixPointFloatUnitTest extends TestCase
         $grammar = new FormalGrammar(
             new CompoundRule(
                 new OneExactlyOrNothing('-+'),
-                new MoreThanOne('0123456789'),
+                new OneOrMore('0123456789'),
                 new OneExactly('.'),
-                new MoreThanOne('0123456789')));
+                new OneOrMore('0123456789')));
 
         // test body
         $result = $grammar->validate($stringToValidate);

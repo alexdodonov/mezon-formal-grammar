@@ -4,7 +4,7 @@ namespace Mezon\Tests\Rules;
 use PHPUnit\Framework\TestCase;
 use Mezon\FormalGrammar;
 use Mezon\Rules\Complex\AnyRuleFromSet;
-use Mezon\Rules\Terminal\CharSet\MoreThanOne;
+use Mezon\Rules\Terminal\CharSet\OneOrMore;
 
 /**
  *
@@ -52,8 +52,8 @@ class AnyRuleFromSetUnitTest extends TestCase
     {
         // setup
         $rule = new AnyRuleFromSet();
-        $rule->addRule(new MoreThanOne('ab'));
-        $rule->addRule(new MoreThanOne('ac'));
+        $rule->addRule(new OneOrMore('ab'));
+        $rule->addRule(new OneOrMore('ac'));
 
         $grammar = new FormalGrammar($rule);
 

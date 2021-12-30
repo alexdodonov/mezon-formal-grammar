@@ -4,13 +4,13 @@ namespace Mezon\Tests\Rules\CharSet;
 use PHPUnit\Framework\TestCase;
 use Mezon\FormalGrammar;
 use Mezon\Rules\Complex\RulesInAnyOrder;
-use Mezon\Rules\Terminal\CharSet\MoreThanOne;
+use Mezon\Rules\Terminal\CharSet\OneOrMoreOrNothing;
 
 /**
  *
  * @psalm-suppress PropertyNotSetInConstructor
  */
-class MoreThanOneUnitTest extends TestCase
+class OneOrMoreOrNothingUnitTest extends TestCase
 {
 
     /**
@@ -30,12 +30,17 @@ class MoreThanOneUnitTest extends TestCase
             [
                 'aac',
                 false
+            ],
+            // #2, the second case
+            [
+                '',
+                true
             ]
         ];
     }
 
     /**
-     * Testing method validate for MoreThanOneCharFromSet rule
+     * Testing method validate for OneOrMoreCharFromSet rule
      *
      * @param string $stringToValidate
      *            string to validate
@@ -43,11 +48,11 @@ class MoreThanOneUnitTest extends TestCase
      *            expected result of validation
      * @dataProvider validateDataProvider
      */
-    public function testMoreThanOneRule(string $stringToValidate, bool $expectedResult): void
+    public function testOneOrMoreRule(string $stringToValidate, bool $expectedResult): void
     {
         // setup
         $rule = new RulesInAnyOrder();
-        $rule->addRule(new MoreThanOne('ab'));
+        $rule->addRule(new OneOrMoreOrNothing('ab'));
 
         $grammar = new FormalGrammar($rule);
 

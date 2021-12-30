@@ -44,7 +44,7 @@ class OneExactlyOrNothingUnitTest extends TestCase
     }
 
     /**
-     * Testing method validate for MoreThanOneCharFromSet rule
+     * Testing method validate for OneOrMoreCharFromSet rule
      *
      * @param string $stringToValidate
      *            string to validate

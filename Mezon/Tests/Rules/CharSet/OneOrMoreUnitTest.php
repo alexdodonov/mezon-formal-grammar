@@ -3,13 +3,14 @@ namespace Mezon\Tests\Rules\CharSet;
 
 use PHPUnit\Framework\TestCase;
 use Mezon\FormalGrammar;
-use Mezon\Rules\Terminal\CharSet\OneExactly;
+use Mezon\Rules\Complex\RulesInAnyOrder;
+use Mezon\Rules\Terminal\CharSet\OneOrMore;
 
 /**
  *
  * @psalm-suppress PropertyNotSetInConstructor
  */
-class OneExactlyUnitTest extends TestCase
+class OneOrMoreUnitTest extends TestCase
 {
 
     /**
@@ -20,24 +21,14 @@ class OneExactlyUnitTest extends TestCase
     public function validateDataProvider(): array
     {
         return [
-            // #0
+            // #0, the first case, matches
             [
-                'a',
+                'aab',
                 true
             ],
-            // #1
+            // #1, the second case, unexpected symbol
             [
-                'b',
-                true
-            ],
-            // #2
-            [
-                'ab',
-                false
-            ],
-            // #3
-            [
-                '',
+                'aac',
                 false
             ]
         ];
@@ -52,10 +43,13 @@ class OneExactlyUnitTest extends TestCase
      *            expected result of validation
      * @dataProvider validateDataProvider
      */
-    public function testOneExactlyRule(string $stringToValidate, bool $expectedResult): void
+    public function testOneOrMoreRule(string $stringToValidate, bool $expectedResult): void
     {
         // setup
-        $grammar = new FormalGrammar(new OneExactly('ab'));
+        $rule = new RulesInAnyOrder();
+        $rule->addRule(new OneOrMore('ab'));
+
+        $grammar = new FormalGrammar($rule);
 
         // test body
         $result = $grammar->validate($stringToValidate);

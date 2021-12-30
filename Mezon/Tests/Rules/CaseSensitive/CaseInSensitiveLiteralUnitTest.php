@@ -4,7 +4,7 @@ namespace Mezon\Tests\Rules\CaseSensitive;
 use PHPUnit\Framework\TestCase;
 use Mezon\FormalGrammar;
 use Mezon\Rules\Complex\RulesInAnyOrder;
-use Mezon\Rules\Terminal\CharSet\MoreThanOne;
+use Mezon\Rules\Terminal\CharSet\OneOrMore;
 use Mezon\Rules\Terminal\Literal\CaseInSensitive\CaseInSensitiveLiteral;
 
 /**
@@ -64,7 +64,7 @@ class CaseInSensitiveLiteralUnitTest extends TestCase
         // setup
         $rule = new RulesInAnyOrder();
         $rule->addRule(new CaseInSensitiveLiteral('literal'));
-        $rule->addRule(new MoreThanOne(' '));
+        $rule->addRule(new OneOrMore(' '));
 
         $grammar = new FormalGrammar($rule);
 

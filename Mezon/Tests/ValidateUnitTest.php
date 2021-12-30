@@ -4,7 +4,7 @@ namespace Mezon\Tests;
 use PHPUnit\Framework\TestCase;
 use Mezon\FormalGrammar;
 use Mezon\Rules\Complex\RulesInAnyOrder;
-use Mezon\Rules\Terminal\CharSet\MoreThanOne;
+use Mezon\Rules\Terminal\CharSet\OneOrMore;
 
 /**
  *
@@ -57,8 +57,8 @@ class ValidateUnitTest extends TestCase
     {
         // setup
         $rule = new RulesInAnyOrder();
-        $rule->addRule(new MoreThanOne('a'));
-        $rule->addRule(new MoreThanOne('b'));
+        $rule->addRule(new OneOrMore('a'));
+        $rule->addRule(new OneOrMore('b'));
         
         $grammar = new FormalGrammar($rule);
 

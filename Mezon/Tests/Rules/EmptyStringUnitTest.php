@@ -7,7 +7,7 @@ use Mezon\Rules\Complex\CompoundRule;
 use Mezon\Rules\Terminal\Literal\EmptyString;
 use Mezon\Rules\Complex\AnyRuleFromSet;
 use Mezon\Rules\Terminal\Literal\CaseSensitive\CaseSensitiveLiteral;
-use Mezon\Rules\Terminal\CharSet\MoreThanOne;
+use Mezon\Rules\Terminal\CharSet\OneOrMore;
 
 /**
  *
@@ -59,7 +59,7 @@ class EmptyStringUnitTest extends TestCase
         $literalOrNothing->addRule(new EmptyString());
 
         $rule = new AnyRuleFromSet();
-        $rule->addRule(new MoreThanOne(' '));
+        $rule->addRule(new OneOrMore(' '));
         $rule->addRule($literalOrNothing);
 
         $grammar = new FormalGrammar($rule);

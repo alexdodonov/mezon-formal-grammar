@@ -5,22 +5,23 @@ use Mezon\StringIterator;
 use Mezon\Rules\RuleInterface;
 
 /**
- * Rule wich allows the defined set of characters
+ * Base class for the rule wich allows the defined set of characters
  *
  * @package FormalGrammar
- * @subpackage MoreThanOne
+ * @subpackage OneOrMoreBase
  * @author Dodonov A.A.
  * @version v.1.0 (2021/12/29)
  * @copyright Copyright (c) 2021, aeon.org
  */
 
 /**
- * Rule wich allows the defined set of characters.
- * Empty strings are not allowed. At least one character from the defined set of chars.
+ * Base class for the rule wich allows the defined set of characters
+ * Empty strings are not allowed.
+ * At least one character from the defined set of chars.
  *
  * @author gdever
  */
-class MoreThanOne implements RuleInterface
+abstract class OneOrMoreBase implements RuleInterface
 {
 
     /**
@@ -42,13 +43,16 @@ class MoreThanOne implements RuleInterface
     }
 
     /**
+     * Validating that at least one symbol from the charset exists
      *
-     * {@inheritdoc}
-     * @see RuleInterface::validate()
+     * @param StringIterator $iterator
+     *            iterator
+     * @param bool $ruleWasApplied
+     *            was the rule applied
+     * @return StringIterator iterator
      */
-    public function validate(StringIterator $iterator, bool &$ruleWasApplied): StringIterator
+    protected function validateStrict(StringIterator $iterator, bool &$ruleWasApplied): StringIterator
     {
-        $ruleWasApplied = false;
         $startPosition = $iterator->current();
 
         // we have reached the end of the string
