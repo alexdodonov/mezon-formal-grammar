@@ -1,7 +1,6 @@
 <?php
 namespace Mezon\Rules\Terminal\CharSet;
 
-use Mezon\StringIterator;
 use Mezon\Rules\RuleInterface;
 
 /**
