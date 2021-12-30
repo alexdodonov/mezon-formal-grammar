@@ -3,10 +3,7 @@ namespace Mezon\Tests\RealLifeCases;
 
 use PHPUnit\Framework\TestCase;
 use Mezon\FormalGrammar;
-use Mezon\Rules\Complex\AnyRuleFromSet;
 use Mezon\Rules\Complex\CompoundRule;
-use Mezon\Rules\Terminal\Literal\CaseInSensitive\CaseInSensitiveLiteral;
-use Mezon\Rules\Terminal\Literal\CaseInSensitive\CaseInSensitiveLiteralOrNothing;
 use Mezon\Rules\Terminal\CharSet\MoreThanOne;
 use Mezon\Rules\Terminal\CharSet\OneExactly;
 use Mezon\Rules\Terminal\CharSet\OneExactlyOrNothing;
