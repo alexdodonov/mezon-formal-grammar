@@ -1,0 +1,42 @@
+{
+	"name": "mezon/formal-grammar",
+	"description": "Set of classes for formal grammars",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Dodonov Alexey",
+			"email": "alexey@dodonov.pro",
+			"homepage": "http://gdzone.ru",
+			"role": "Founder"
+		}
+	],
+	"require-dev": {
+		"phpunit/phpunit": "^8.5",
+		"phpunit/php-token-stream": "3.1.2",
+        "vimeo/psalm": "^4.2",
+		"infection/infection": "^0.21.5"
+	},
+	"require": {
+		"php": ">=7.2.0"
+	},
+	"support": {
+		"email": "alexey@dodonov.pro",
+		"issues": "https://github.com/alexdodonov/mezon-formal-grammar/issues",
+		"source": "https://github.com/alexdodonov/mezon-formal-grammar"
+	},
+	"minimum-stability": "dev",
+	"homepage": "https://github.com/alexdodonov/mezon-formal-grammar",
+	"prefer-stable": true,
+	"autoload": {
+		"psr-4": {
+			"Mezon\\": "./Mezon/"
+		}
+	},
+	"scripts": {
+		"test": "php ./vendor/phpunit/phpunit/phpunit --order-by=random",
+		"psalm": "php ./vendor/vimeo/psalm/psalm --show-info=true --no-cache",
+		"infection" : "php ./vendor/infection/infection/bin/infection --threads=4 --min-msi=87",
+		"psalm-self": "php ./vendor/vimeo/psalm/psalm --config=psalm-self.xml --show-info=true --no-cache",
+		"test-unit": "php ./vendor/phpunit/phpunit/phpunit --testsuite unit --order-by=random"
+	}
+}
